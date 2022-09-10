@@ -35,25 +35,29 @@
 
   <%# end %>
 
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this article from being saved:</h2>
+<%# if @user.errors.any? %>
+<!--   <div id="error_explanation">
+    <h2><%#= pluralize(@user.errors.count, "error") %> prohibited this article from being saved:</h2>
     <ul>
-      <% @user.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
+      <%# @user.errors.each do |error| %>
+        <li><%#= error.full_message %></li>
+      <%# end %>
     </ul>
-  </div>
-<% end %>
+  </div> -->
+<%# end %>
 
 
 <!-- ########## Railsy Forms with form_with ########## -->
-  <%= form_with model: @user do |form| %>
-    <%= form.label "Username:" %>
-    <%= form.text_field :username, :value => "User" %>
-    <%= form.label :email %>
-    <%= form.email_field :email, placeholder: "email@example.com" %>
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-    <%= form.submit "Create" %>
-  <% end %>
+  <%#= form_with model: @user do |form| %>
+    <%#= form.label "Username:" %>
+    <%#= form.text_field :username, :value => "User" %>
+    <%#= form.label :email %>
+    <%#= form.email_field :email, placeholder: "email@example.com" %>
+    <%#= form.label :password %>
+    <%#= form.password_field :password %>
+    <%#= form.submit "Create" %>
+  <%# end %>
+
+
+  <!-- ################# using partial ################# -->
+  <%= render partial: "form", locals: {user: @user} %>
