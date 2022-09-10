@@ -1,18 +1,36 @@
 <!-- ########## HTML Form ########## -->
+  <!-- <form accept-charset="UTF-8" action="/users" method="post">
 
-<form accept-charset="UTF-8" action="/users" method="post">
-
-  <label for="user[username]">Username:</label>
-  <input type='text' name='user[username]'><br>
+    <label for="user[username]">Username:</label>
+    <input type='text' name='user[username]'><br>
 
 
-  <label for="user[email]">Email:</label>
-  <input type='email' name='user[email]'><br>
-    
-  <label for="user[password]">Password:</label>
-  <input type='password' name='user[password]'><br>
+    <label for="user[email]">Email:</label>
+    <input type='email' name='user[email]'><br>
+      
+    <label for="user[password]">Password:</label>
+    <input type='password' name='user[password]'><br>
 
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="submit" value='Submit'>
-  
-</form>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="submit" value='Submit'>
+
+  </form>
+   -->
+
+
+<!-- ########## Railsy Forms with form_tag ########## -->
+  <%= form_tag('/users', method: "post" ) do %>
+
+    <%= label_tag(:username, 'username') %> 
+    <%= text_field_tag (:username) %>
+
+    <%= label_tag(:email, 'email') %> 
+    <%= email_field_tag (:email)  %>
+
+    <%= label_tag(:password, 'password') %> 
+    <%= password_field_tag (:password) %>
+
+    <!-- (no longer need the authentication token because Rails will insert that for you automatically.) -->
+    <%= submit_tag('submit') %>
+
+  <% end %>
