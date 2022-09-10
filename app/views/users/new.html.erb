@@ -11,7 +11,7 @@
     <label for="user[password]">Password:</label>
     <input type='password' name='user[password]'><br>
 
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="authenticity_token" value="<%#= form_authenticity_token %>">
     <input type="submit" value='Submit'>
 
   </form>
@@ -19,18 +19,31 @@
 
 
 <!-- ########## Railsy Forms with form_tag ########## -->
-  <%= form_tag('/users', method: "post" ) do %>
+  <%#= form_tag('/users', method: "post" ) do %>
 
-    <%= label_tag(:username, 'username') %> 
-    <%= text_field_tag (:username) %>
+    <%#= label_tag(:username, 'username') %> 
+    <%#= text_field_tag (:username) %>
 
-    <%= label_tag(:email, 'email') %> 
-    <%= email_field_tag (:email)  %>
+    <%#= label_tag(:email, 'email') %> 
+    <%#= email_field_tag (:email)  %>
 
-    <%= label_tag(:password, 'password') %> 
-    <%= password_field_tag (:password) %>
+    <%#= label_tag(:password, 'password') %> 
+    <%#= password_field_tag (:password) %>
 
     <!-- (no longer need the authentication token because Rails will insert that for you automatically.) -->
-    <%= submit_tag('submit') %>
+    <%#= submit_tag('submit') %>
 
+  <%# end %>
+
+
+
+<!-- ########## Railsy Forms with form_with ########## -->
+  <%= form_with model: @user do |form| %>
+    <%= form.label "Username:" %>
+    <%= form.text_field :username, :value => "User" %>
+    <%= form.label :email %>
+    <%= form.email_field :email, placeholder: "email@example.com" %>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+    <%= form.submit "Create" %>
   <% end %>
